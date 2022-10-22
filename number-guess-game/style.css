@@ -1,0 +1,24 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+fieldset {
+  width: 300px;
+  text-align: center;
+  padding: 3em;
+  border-radius: 10px;
+}
+legend {
+  font-size: 20px;
+}
+#resultcheck {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 1em;
+}
+.emp {
+  color: red;
+  font-size: 20px;
+}
