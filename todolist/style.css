@@ -2,31 +2,36 @@ body {
   margin: 0;
   height: 100vh;
   width: 100vw;
-  background-image: url("images/background.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: rgba(255, 140, 0, 0.759);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Do Hyeon", sans-serif;
 }
-
 .container {
   background-color: white;
-  min-height: 100vh;
+  height: 80vh;
+  width: 50vw;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: scroll;
 }
-
 .task-tabs {
   display: flex;
   border: 1px solid lightgray;
+  border-radius: 10px 10px 0px 0px;
   position: relative;
 }
-
 .task-tabs div {
   padding: 1em;
+  font-weight: bold;
 }
-
 .task-area {
   border: 1px solid lightgray;
+  border-radius: 10px 10px 0px 0px;
 }
 #under-line {
   height: 4px;
@@ -37,15 +42,46 @@ body {
   top: 52px;
   padding: 0px;
 }
-
 .task {
   display: flex;
   justify-content: space-between;
   padding: 1em;
+  border-bottom: 1px solid lightgray;
+  font-size: 18px;
 }
 .task-done {
   text-decoration: line-through;
 }
 .task-tabs div {
   cursor: pointer;
+}
+h1 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.input-area {
+  padding-bottom: 20px;
+  text-align: center;
+}
+#task-input {
+  width: 25vw;
+  padding: 3px;
+  margin-left: 1em;
+}
+.check {
+  color: red;
+}
+.return {
+  color: green;
+}
+button {
+  border: 0;
+  background-color: white;
+  font-size: 20px;
+}
+.contentBox {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 77%;
 }

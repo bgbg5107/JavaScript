@@ -16,13 +16,26 @@ let tabs = document.querySelectorAll(".task-tabs div"); //여러개 선택
 let taskList = [];
 let filterList = [];
 let mode = "all";
+
 addButton.addEventListener("click", addTask);
+taskInput.addEventListener("focus", focusInput);
+taskInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    addTask(event);
+    taskInput.value = "";
+  }
+});
 
 for (let i = 1; i < tabs.length; i++) {
   tabs[i].addEventListener("click", function (event) {
     filter(event);
   });
 }
+
+function focusInput() {
+  taskInput.value = "";
+}
+
 function addTask() {
   let task = {
     id: randomIDGenerate(),
@@ -30,39 +43,41 @@ function addTask() {
     isComplete: false,
   };
   taskList.push(task);
-  console.log(taskList);
   render();
 }
 
 function render() {
   let list = [];
+  let resultHTML = "";
+
   if (mode == "all") {
     list = taskList;
-  } else if (mode == "ongoing" || mode == "done") {
+  } else {
     list = filterList;
   }
-  let resultHTML = "";
+
   for (let i = 0; i < list.length; i++) {
     if (list[i].isComplete == true) {
       resultHTML += `<div class="task">
-        <div class = "task-done">${list[i].taskContent}</div>
-        <div>
-            <button onclick="toggleComplete('${list[i].id}')">Check</button>
-            <button onclick="deleteTask('${list[i].id}')">Delete</button>
+        <div class = "contentBox task-done">${list[i].taskContent}</div>
+        <div class = "button-box">
+            <button onclick="toggleComplete('${list[i].id}')"><i class="fa-solid fa-rotate-left return"></i></button>&nbsp;&nbsp;
+            <button onclick="deleteTask('${list[i].id}')"><i class="fa-solid fa-trash"></i></button>
         </div>
      </div>`;
     } else {
       resultHTML += `<div class="task">
-        <div>${list[i].taskContent}</div>
-        <div>
-            <button onclick="toggleComplete('${list[i].id}')">Check</button>
-            <button onclick="deleteTask('${list[i].id}')">Delete</button>
+        <div class = "contentBox">${list[i].taskContent}</div>
+        <div class = "button-box">
+            <button onclick="toggleComplete('${list[i].id}')"><i class="fa-solid fa-check check"></i></button>&nbsp;&nbsp;
+            <button onclick="deleteTask('${list[i].id}')"><i class="fa-solid fa-trash"></i></button>
         </div>
      </div>`;
     }
   }
   document.getElementById("task-board").innerHTML = resultHTML;
 }
+
 function toggleComplete(id) {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
@@ -70,44 +85,48 @@ function toggleComplete(id) {
       break;
     }
   }
-  render();
-  console.log(taskList);
+  filter();
 }
-function randomIDGenerate() {
-  return (performance.now().toString(36) + Math.random().toString(36)).replace(
-    /\./g,
-    ""
-  );
-}
+
 function deleteTask(id) {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
       taskList.splice(i, 1);
-      break;
     }
   }
-  render();
+  filter();
 }
-function filter(event) {
-  mode = event.target.id;
-  filterList = [];
 
-  if (mode == "all") {
-    render();
-  } else if (mode == "ongoing") {
+function filter(event) {
+  if (event) {
+    mode = event.target.id;
+    document.getElementById("under-line").style.width =
+      event.target.offsetWidth + "px";
+    document.getElementById("under-line").style.top =
+      event.target.offsetTop + event.target.offsetHeight + "px";
+    document.getElementById("under-line").style.left =
+      event.target.offsetLeft + "px";
+  }
+  filterList = [];
+  if (mode == "ongoing") {
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete == false) {
         filterList.push(taskList[i]);
       }
     }
-    render();
   } else if (mode == "done") {
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete == true) {
         filterList.push(taskList[i]);
       }
     }
-    render();
   }
-  console.log(filterList);
+  render();
+}
+
+function randomIDGenerate() {
+  return (performance.now().toString(36) + Math.random().toString(36)).replace(
+    /\./g,
+    ""
+  );
 }
