@@ -9,11 +9,12 @@
 // 입력한 숫자 입력하면 알려주기, 기회 깎지않음
 
 let computerNum = 0;
-let checkBtn = document.getElementById("checkbtn");
-let inputNum = document.getElementById("inputnum");
-let resultCheck = document.getElementById("resultcheck");
+let checkBtn = document.getElementById("checkBtn");
+let inputNum = document.getElementById("inputNum");
+let resultCheck = document.getElementById("resultCheck");
 let chances = document.getElementById("chance");
-let resetBtn = document.getElementById("resetbtn");
+let resetBtn = document.getElementById("resetBtn");
+let gif = document.getElementById("gif");
 
 checkBtn.addEventListener("click", play);
 resetBtn.addEventListener("click", reset);
@@ -39,10 +40,16 @@ function play() {
   }
   if (Number < computerNum) {
     resultCheck.textContent = "UP";
+    gif.src =
+      "https://media2.giphy.com/media/Kg3HfmbPOGJggjjS31/giphy.gif?cid=ecf05e47rkksxu6j0xukkg779zmfvxgvtxm2qfd6woihj4nt&rid=giphy.gif&ct=g";
   } else if (Number > computerNum) {
     resultCheck.textContent = "DOWN";
+    gif.src =
+      "https://media3.giphy.com/media/Js7cqIkpxFy0bILFFA/giphy.gif?cid=ecf05e47z7qmdk026qw8nk2lc6jd3z4qfffk1i6gz8qxymtm&rid=giphy.gif&ct=g";
   } else if (Number == computerNum) {
     resultCheck.textContent = "BINGO";
+    gif.src =
+      "https://media4.giphy.com/media/KU45lwbDexLBbyCCte/giphy.gif?cid=ecf05e47vuufxrd17el9xsd71bhyt2pl0cobtmbm1fn0qcpl&rid=giphy.gif&ct=s";
   }
   if (inputNum.value == computerNum) {
     checkBtn.disabled = true;
@@ -55,15 +62,20 @@ function play() {
   console.log(numList);
   if (chance < 1) {
     checkBtn.disabled = true;
+    resultCheck.textContent = "실패!";
+    gif.src =
+      "https://media0.giphy.com/media/pSBiwdd99Cak0/giphy.gif?cid=ecf05e47gixhfzl36exufircazyb4lujofjpi6dujg0dpazn&rid=giphy.gif&ct=g";
     return;
   }
 }
 function reset() {
   computerRandom();
-  resultCheck.textContent = "숫자를 입력하세요";
+  resultCheck.textContent = "다시한번 가보자구~~";
   inputNum.value = "";
   chance = 5;
   chances.textContent = `남은 기회는 ${chance}번`;
+  gif.src =
+    "https://media0.giphy.com/media/cEYFeE4wJ6jdDVBiiIM/giphy.gif?cid=ecf05e47s3438kxc6il3avammuwo75wsjxsjbcsnj4rpixgv&rid=giphy.gif&ct=g";
   checkBtn.disabled = false;
   numList = [];
 }

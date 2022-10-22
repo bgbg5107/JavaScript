@@ -4,20 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>숫자맞추기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <fieldset>
       <legend>숫자맞추기 게임</legend>
-      <div id="resultcheck">숫자를 입력하세요!</div>
-      <div style="font-size: 15px" id="chance">
-        남은 기회 <span class="emp">5</span>번
-      </div>
+      <h1 id="resultCheck">한번 가보자구~~</h1>
+      <div id="chance">주어진 기회 <span class="emp">5</span>번</div>
       <br />
-      <input text="number" id="inputnum" /><br /><br />
-      <button id="checkbtn">확인</button>&nbsp;&nbsp;
-      <button id="resetbtn">초기화</button>
+      <img
+        src="https://media0.giphy.com/media/cEYFeE4wJ6jdDVBiiIM/giphy.gif?cid=ecf05e47s3438kxc6il3avammuwo75wsjxsjbcsnj4rpixgv&rid=giphy.gif&ct=g"
+        id="gif"
+      />
+      <input
+        text="number"
+        id="inputNum"
+        placeholder=" 숫자를 입력하세요!"
+      /><br /><br />
+      <button id="checkBtn">GO</button>&nbsp;&nbsp;
+      <button id="resetBtn">다시 도전</button>
     </fieldset>
     <script src="main.js"></script>
   </body>
