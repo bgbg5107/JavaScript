@@ -1,0 +1,102 @@
+body {
+  font-family: "Newsreader", serif;
+}
+.head-line {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+.head-line svg {
+  width: 440px;
+}
+.menus {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 4px double black;
+}
+.menus button {
+  background: none;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+}
+.menus button:hover {
+  background-color: #ebebeb;
+}
+.news-img-size {
+  max-width: 100%;
+  max-height: 250px;
+}
+.news {
+  border-bottom: 2px solid black;
+}
+.news-title {
+  margin-top: 20px;
+  font-weight: bold;
+}
+.search-icon {
+  padding: 10px 5px 10px 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px;
+  cursor: pointer;
+}
+.menu-icon {
+  padding: 10px 5px 10px 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px;
+  cursor: pointer;
+  display: none;
+}
+#menu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+  background-color: white;
+  width: 40vw;
+  padding: 10px;
+}
+#menu-bar {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  transition: 0.5s;
+  width: 40vw;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+#menu a {
+  display: block;
+  transition: 0.3s;
+  text-decoration: none;
+  color: black;
+  padding: 3px;
+}
+#menu a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 425px) {
+  .menu-icon {
+    display: block;
+    padding: 10px 5px 10px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px;
+    cursor: pointer;
+  }
+  .iconBox {
+    display: flex;
+  }
+  .menus {
+    display: none;
+  }
+  .head-line {
+    margin-bottom: 20px;
+  }
+}
