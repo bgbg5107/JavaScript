@@ -49,7 +49,7 @@ for (let i = 1; i < tabs.length; i++) {
 }
 
 
- render=()=>{
+ const render=()=>{
   let list = [];
   let resultHTML = "";
 
@@ -81,7 +81,7 @@ for (let i = 1; i < tabs.length; i++) {
   document.getElementById("task-board").innerHTML = resultHTML;
 }
 
- toggleComplete=(id)=> {
+const toggleComplete=(id)=> {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
       taskList[i].isComplete = !taskList[i].isComplete;
@@ -91,7 +91,7 @@ for (let i = 1; i < tabs.length; i++) {
   filter();
 }
 
-deleteTask=(id)=> {
+const deleteTask=(id)=> {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
       taskList.splice(i, 1);
@@ -100,7 +100,7 @@ deleteTask=(id)=> {
   filter();
 }
 
- filter=(event)=> {
+const filter=(event)=> {
   if (event) {
     mode = event.target.id;
     document.getElementById("under-line").style.width =
@@ -127,7 +127,7 @@ deleteTask=(id)=> {
   render();
 }
 
- randomIDGenerate=()=> {
+const randomIDGenerate=()=> {
   return (performance.now().toString(36) + Math.random().toString(36)).replace(
     /\./g,
     ""
