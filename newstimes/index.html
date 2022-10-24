@@ -26,7 +26,11 @@
   <body>
     <div class="iconBox">
       <i class="fa-solid fa-bars menu-icon" onclick="openMenu()"></i>
-      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <i class="fa-solid fa-magnifying-glass search-icon" onclick="openSearch()"></i>
+      <div id="searchBox">
+        <input type="text" placeholder="search">
+        <button>GO</button>
+      </div>
     </div>
     <div id="menu-bar">
       <ul id="menu">
@@ -74,7 +78,7 @@
           <button>Energy</button>
         </div>
       </section>
-      <section>
+      <section id="news-board">
         <div class="row news">
           <div class="col-lg-4">
             <img
@@ -83,8 +87,8 @@
             />
           </div>
           <div class="col-lg-8">
-            <h2 class="news-title">뉴스타임즈 만들어보기 재밌네~</h2>
-            <p>오늘내로 뉴스타임즈 만들기를 완료하다</p>
+            <h2 class="news-title">Title</h2>
+            <p>Contents</p>
             <div>SBS * 2022-10-24</div>
           </div>
         </div>
