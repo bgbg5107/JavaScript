@@ -11,7 +11,7 @@ body {
 .container {
   background-color: white;
   height: 80vh;
-  width: 50vw;
+  width: 60vw;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -21,6 +21,7 @@ body {
 }
 .task-tabs {
   display: flex;
+  flex-wrap: wrap;
   border: 1px solid lightgray;
   border-radius: 10px 10px 0px 0px;
   position: relative;
@@ -79,9 +80,29 @@ button {
   background-color: white;
   font-size: 20px;
 }
+.button-box{
+  display: flex;
+}
 .contentBox {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 77%;
+}
+@media screen and (max-width:426px){
+  .container{
+    width: 80%;
+  }
+  #task-input{
+    width: 40vw;
+    padding: 3px;
+    margin-left: 1em;
+  }
+  .task-tabs div {
+    padding: 0.7em;
+    font-weight: bold;
+  }
+  .button-box{
+    display: flex;
+  }
 }

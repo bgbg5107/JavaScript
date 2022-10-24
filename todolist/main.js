@@ -17,9 +17,25 @@ let taskList = [];
 let filterList = [];
 let mode = "all";
 
-addButton.addEventListener("click", addTask);
-taskInput.addEventListener("focus", focusInput);
-taskInput.addEventListener("keypress", function (event) {
+addButton.addEventListener("click", addTask=()=>{
+  let task = {
+    id: randomIDGenerate(),
+    taskContent: taskInput.value,
+    isComplete: false,
+  };
+  taskList.push(task);
+  if(task.taskContent == ""){
+    taskList.pop(task)
+  }
+  render();
+  console.log(taskList)
+});
+
+taskInput.addEventListener("focus", focusInput=()=>{
+  taskInput.value = "";
+});
+
+taskInput.addEventListener("keypress", (event) =>{
   if (event.key === "Enter") {
     addTask(event);
     taskInput.value = "";
@@ -27,26 +43,13 @@ taskInput.addEventListener("keypress", function (event) {
 });
 
 for (let i = 1; i < tabs.length; i++) {
-  tabs[i].addEventListener("click", function (event) {
+  tabs[i].addEventListener("click", (event)=> {
     filter(event);
   });
 }
 
-function focusInput() {
-  taskInput.value = "";
-}
 
-function addTask() {
-  let task = {
-    id: randomIDGenerate(),
-    taskContent: taskInput.value,
-    isComplete: false,
-  };
-  taskList.push(task);
-  render();
-}
-
-function render() {
+ render=()=>{
   let list = [];
   let resultHTML = "";
 
@@ -78,7 +81,7 @@ function render() {
   document.getElementById("task-board").innerHTML = resultHTML;
 }
 
-function toggleComplete(id) {
+ toggleComplete=(id)=> {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
       taskList[i].isComplete = !taskList[i].isComplete;
@@ -88,7 +91,7 @@ function toggleComplete(id) {
   filter();
 }
 
-function deleteTask(id) {
+deleteTask=(id)=> {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
       taskList.splice(i, 1);
@@ -97,7 +100,7 @@ function deleteTask(id) {
   filter();
 }
 
-function filter(event) {
+ filter=(event)=> {
   if (event) {
     mode = event.target.id;
     document.getElementById("under-line").style.width =
@@ -124,7 +127,7 @@ function filter(event) {
   render();
 }
 
-function randomIDGenerate() {
+ randomIDGenerate=()=> {
   return (performance.now().toString(36) + Math.random().toString(36)).replace(
     /\./g,
     ""
