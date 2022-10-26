@@ -4,6 +4,8 @@ let menus = document.querySelectorAll(".menus button");
 let menuBar = document.querySelectorAll(".menu button");
 
 let news = [];
+let total_pages = 0;
+let page = 1;
 let url;
 const getNews=async()=>{
   try{
@@ -14,7 +16,10 @@ const getNews=async()=>{
     let data = await response.json();
     if(response.status == 200){
       news = data.articles;
-      // console.log(news);
+      total_pages = data.total_pages;
+      page = data.page;
+      console.log(news);
+      console.log(page);
       render();
     }else
       throw new Error(data.message);
@@ -40,8 +45,12 @@ const getNewByTopic = async(event) => {
   getNews();
 }
 
-menuBar.forEach(menu=>menu.addEventListener("click",(event)=>getNewByTopic(event)));
-  
+const headClick=()=>{
+  url = new URL(
+    `https://newsapi.org/v2/top-headlines?country=us&apiKey=867414a301c248e983d699938ff890e7`
+  );
+  getNews();
+}  
 
 
 
@@ -84,6 +93,10 @@ const render=()=>{
 const errorRender = (message)=> {
   let errorHTML = `<div>${message}</div>`;
   document.getElementById("new-board").innerHTML = errorHTML;
+}
+
+const pagenation = () => {
+
 }
 
 searchButton.addEventListener("click",getNewsByKeyword);
